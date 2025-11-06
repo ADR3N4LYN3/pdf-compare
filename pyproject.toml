@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdf-compare"
+version = "1.0.0"
+description = "Modern CLI tool for comparing PDF files with advanced visual diff capabilities"
+authors = [{name = "ADR3N4LYN3"}]
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+keywords = ["pdf", "compare", "diff", "cli", "visual-diff"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Utilities",
+]
+
+dependencies = [
+    "PyMuPDF>=1.23.0",
+    "Pillow>=10.0.0",
+    "click>=8.1.0",
+    "reportlab>=4.0.0",
+    "tqdm>=4.65.0",
+    "colorama>=0.4.6",
+    "numpy>=1.24.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.5.0",
+]
+build = [
+    "pyinstaller>=6.0.0",
+    "cx-Freeze>=6.15.0",
+]
+
+[project.scripts]
+pdf-compare = "pdf_compare.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/ADR3N4LYN3/pdf-compare"
+Repository = "https://github.com/ADR3N4LYN3/pdf-compare"
+Issues = "https://github.com/ADR3N4LYN3/pdf-compare/issues"
+
+[tool.setuptools]
+packages = ["pdf_compare"]
+package-dir = {"" = "src"}
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
